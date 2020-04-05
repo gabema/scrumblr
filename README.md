@@ -65,6 +65,22 @@ $ docker run --name some-redis -p 6379:6379 -d redis
 $ docker build -t gabema/scrumblr-app -f .docker\app.dockerfile .
 ```
 
+## Working with kubernetes
+Use [kompose](https://github.com/kubernetes/kompose) to generate the configuration
+```
+$ kompose convert -o .k8s
+```
+
+Starting up the kubernetes cluster
+```
+kubectl apply -f ./.k8s
+```
+
+Tearing down a kubernetes cluster
+```
+kubectl delete -f ./.k8s
+```
+
 # license
 
 scrumblr is free software: you can redistribute it and/or modify

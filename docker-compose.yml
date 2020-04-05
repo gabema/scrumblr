@@ -22,6 +22,11 @@ version: '3.7'
 # docker-compose up
 # docker-compose down
 
+# kubernetes helper commands
+# kompose convert -o .k8s
+# kubectl apply -f ./.k8s
+# kubectl delete -f ./.k8s
+
 services:
     webscrumblr:
         image: gabema/scrumblr:v1.0.3

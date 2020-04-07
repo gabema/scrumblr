@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: webscrumblr
   name: webscrumblr
 spec:
+  sessionAffinity: ClientIP
   ports:
   - name: "8080"
     port: 8080

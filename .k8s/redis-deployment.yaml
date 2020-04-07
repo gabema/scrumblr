@@ -13,8 +13,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: redis
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       annotations:
@@ -30,13 +29,7 @@ spec:
         imagePullPolicy: ""
         name: redis
         resources: {}
-        volumeMounts:
-        - mountPath: /data
-          name: redis-data
       restartPolicy: Always
       serviceAccountName: ""
-      volumes:
-      - name: redis-data
-        persistentVolumeClaim:
-          claimName: redis-data
+      volumes: null
 status: {}

@@ -30,27 +30,18 @@ version: '3.7'
 services:
     webscrumblr:
         image: gabema/scrumblr:v1.0.3
+#        build:
+#            context: .
+#            dockerfile: .docker/app.dockerfile
         ports:
             - "8080:8080"
         networks:
             - scrumblr-net
-
-    redisdata:
-        image: redis:5.0.8-alpine
-        volumes:
-            - "redis-data:/data"
-        command: ["redis-server", "--appendonly", "yes"]
-
     redis:
         image: redis:5.0.8-alpine
-        volumes:
-            - "redis-data:/data"
         networks:
             - scrumblr-net
 
 networks:
     scrumblr-net:
         driver: bridge
-
-volumes:
-    redis-data:

@@ -6,13 +6,13 @@ metadata:
     kompose.version: 1.21.0 (992df58d8)
   creationTimestamp: null
   labels:
-    io.kompose.service: webscrumblr
-  name: webscrumblr
+    io.kompose.service: nginx
+  name: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: webscrumblr
+      io.kompose.service: nginx
   strategy: {}
   template:
     metadata:
@@ -22,12 +22,14 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/scrumblr-net: "true"
-        io.kompose.service: webscrumblr
+        io.kompose.service: nginx
     spec:
       containers:
-      - image: gabema/scrumblr:v1.0.4
+      - image: gabema/nginx:v1.0.4
         imagePullPolicy: ""
-        name: webscrumblr
+        name: nginx
+        ports:
+        - containerPort: 8080
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""

@@ -28,13 +28,22 @@ version: '3.7'
 # kubectl delete -f ./.k8s
 
 services:
-    webscrumblr:
-        image: gabema/scrumblr:v1.0.3
-#        build:
-#            context: .
-#            dockerfile: .docker/app.dockerfile
+    nginx:
+        image: gabema/nginx:v1.0.4
+        # build:
+        #     context: .
+        #     dockerfile: .docker/nginx.dockerfile
         ports:
             - "8080:8080"
+        networks:
+            - scrumblr-net
+        depends_on:
+            - webscrumblr
+    webscrumblr:
+        image: gabema/scrumblr:v1.0.4
+        # build:
+        #     context: .
+        #     dockerfile: .docker/app.dockerfile
         networks:
             - scrumblr-net
     redis:
